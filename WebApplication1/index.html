@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Zerto Test</title>
+    <link href="style/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="formContorller">
+            <div class="box">
+                <div class="title">
+                    <span>Input</span>
+                </div>
+                <div ng-include="'template/_inputTemplate.html'"></div>
+            </div>
+            <div class="box">
+                <div class="title">
+                    <span>Emails</span>
+                </div>
+                <div class="email-display">
+                    <div class="header">
+                        <div class="header-row">Email</div>
+                        <div class="header-row">Remove</div>
+                    </div>
+                    <div ng-repeat="email in emails" class="content">
+                        <div class="row">{{email}}</div>
+                        <div class="row">
+                            <button ng-click="remove(email)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <span class="title">Logs</span>
+                <div class="wrapper">
+                    <div ng-repeat="message in messages | reverse: messages track by $index ">
+                        <span>{{message}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/services/emailService.js"></script>
+    <script src="scripts/filter/reverse.js"></script>
+    <script src="scripts/controllers/formController.js"></script>
+</body>
+
+</html>
